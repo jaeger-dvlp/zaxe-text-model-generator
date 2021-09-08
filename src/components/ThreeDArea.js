@@ -3,9 +3,13 @@ import * as THREE from 'three'
 
 export default class ThreeDArea extends PureComponent {
   render() {
+    const exporter = new THREE.STLExporter()
+
+    exporter()
+
     const loader = new THREE.FontLoader()
     loader.load('./fonts/Montserrat_Regular.json', (font) => {
-      const geometry = new THREE.TextGeometry('ZAXE', {
+      const geometry = new THREE.TextGeometry('zaxe', {
         font: font,
         size: 2,
         height: 1,

@@ -10467,10 +10467,22 @@ text-table@0.2.0, text-table@^0.2.0:
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
 
+three-stlexporter@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/three-stlexporter/-/three-stlexporter-1.0.0.tgz#ecf5d26f2a07450dd9813576fb84b2b545895e5d"
+  integrity sha1-7PXSbyoHRQ3ZgTV2+4SytUWJXl0=
+  dependencies:
+    three "^0.79.0"
+
 three@^0.132.2:
   version "0.132.2"
   resolved "https://registry.yarnpkg.com/three/-/three-0.132.2.tgz#95eb1856147237c03e887cbbe56f964b6fb40b5e"
   integrity sha512-0wcR7LxxkXMn6Gi58gEs3QvY8WpTVXA31L2VOvpjm4ZPYFRHCZC13UqynheFoS5OXDYgtBneN0dhbaNBE8iLhQ==
+
+three@^0.79.0:
+  version "0.79.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.79.0.tgz#3af96fda47f68b7ab093c298dfa335fa45da0cf4"
+  integrity sha1-Ovlv2kf2i3qwk8KY36M1+kXaDPQ=
 
 throat@^5.0.0:
   version "5.0.0"
