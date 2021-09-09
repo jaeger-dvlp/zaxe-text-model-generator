@@ -1,3 +1,9 @@
-### zaxe | 3D Keychain Generator
+### ⚡ zaxe | 3D Keychain Generator
 
-Try [Demo](https://zaxe-text-model-generator.vercel.app)
+## ✔️ Create 3D Keychain objects with given texts for printing.
+
+## 🚀 Try it at [here.](https://zaxe-text-model-generator.vercel.app)
+
+## Example;
+
+![](./public/img/image.png)
