@@ -27,53 +27,60 @@ export default class oldtda extends Component {
       5,
       100
     )
-    camera.position.x = 10
-    camera.position.y = -30
-    camera.position.z = 100
 
+    var textlength = 0
+    var textMesh
     const scene = new THREE.Scene()
     const renderer = new THREE.WebGLRenderer({antialias: true})
-    objLoader.load('./3dmodels/keychain.obj', (obj) => {
-      scene.add(obj)
-      obj.position.set(0, 30, 0)
-      obj.scale.set(parseInt(name.length / 8) + 1, 1)
-      obj.rotation.set(0, 0, 0)
-      obj.traverse(function (obj) {
-        if (obj.isMesh) {
-          obj.material.color.set('#009ade')
-        }
-      })
-    })
 
     const loader = new THREE.FontLoader()
 
-    loader.load('./fonts/Montserrat_Regular.json', (font) => {
+    loader.load('./fonts/Montserrat_Bold.json', (font) => {
       const geometry = new THREE.TextGeometry(name, {
         font: font,
-        size: 10,
-        height: 5,
+        size: 9,
+        height: 3,
         color: '#009ade'
       })
 
-      const textMesh = new THREE.Mesh(geometry, [
+      textMesh = new THREE.Mesh(geometry, [
         new THREE.MeshPhongMaterial({color: '#009ade'})
       ])
 
       scene.add(textMesh)
-
-      textMesh.position.set(-(name.length * 7) - 10, 12, 0)
+      var box = new THREE.Box3().setFromObject(textMesh)
+      textlength = parseInt(box.max.x - box.min.x)
+      console.log(textlength)
+      textMesh.position.set(-textlength + 20, 13, 0)
       textMesh.rotation.set(0, 0, 0)
 
-      renderer.render(scene, camera)
-
-      let exporter = new STLExporter()
-      stl = exporter.parse(scene)
-
-      const blob = new Blob([stl])
-
-      saveAs(blob, 'zaxe_baski.stl')
+      loadObj()
     })
 
+    function loadObj() {
+      objLoader.load('./3dmodels/keychain.obj', (obj) => {
+        scene.add(obj)
+        obj.position.set(0, 17, 0)
+        if (textlength > 100) {
+          obj.scale.setX(textlength / 50)
+          textMesh.position.set(-textlength + 30, 13, 0)
+        } else if (textlength > 50) {
+          obj.scale.setX(textlength / 50)
+          textMesh.position.set(-textlength + 19, 13, 0)
+        } else {
+          textMesh.position.set(-textlength + 10, 13, 0)
+        }
+        scene.position.setX(100)
+        renderer.render(scene, camera)
+
+        let exporter = new STLExporter()
+        stl = exporter.parse(scene)
+
+        const blob = new Blob([stl])
+
+        saveAs(blob, 'zaxe_baski.stl')
+      })
+    }
     event.preventDefault()
   }
 
