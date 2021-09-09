@@ -23,7 +23,7 @@ body {
 }
 
 .arrow-tip {
-  margin-top: 50px !important;
+  margin-top: 10px !important;
   font-size: 20px !important;
   color: #009ade;
   animation-name: arrowAnim;
@@ -42,6 +42,46 @@ body {
   text-align: center;
   z-index: 100;
   display: block;
+}
+
+.name-input {
+  background-color: white;
+  border: 1px solid #009bde;
+  background-color: white;
+  outline: none !important;
+  border-radius: 5px;
+  padding: 10px;
+  transition: all 0.2s;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.05);
+}
+
+.name-input:focus {
+  transform: scale(1.05);
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.name-input::placeholder {
+  color: #707070;
+}
+
+.submit-btn {
+  padding: 5px 15px 5px 15px;
+  background-color: #009ade !important;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  position: relative;
+  transition: all 0.15s, border-bottom 0.1s;
+  border-bottom: 3px solid #0083bb;
+  top: 0px;
+}
+.submit-btn:hover {
+  transform: scale(1.05);
+}
+
+.submit-btn:active {
+  top: 2px;
+  border-bottom: 1px solid #0083bb;
 }
 @keyframes arrowAnim {
   0% {
