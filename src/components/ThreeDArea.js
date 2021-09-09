@@ -1,10 +1,8 @@
 import React, {Component} from 'react'
-import PropTypes from 'prop-types'
 import * as THREE from 'three'
 import {saveAs} from 'file-saver'
 import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import {STLExporter} from 'three/examples/jsm/exporters/STLExporter'
-import {render} from '@testing-library/react'
 const objLoader = new OBJLoader()
 var stl
 export default class oldtda extends Component {
