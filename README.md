@@ -4,6 +4,6 @@
 
 ### 🚀 Try it at [here.](https://zaxe-text-model-generator.vercel.app)
 
-## Example;
+### Example;
 
 ![](./public/img/image.png)
