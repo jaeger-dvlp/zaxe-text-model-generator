@@ -78,7 +78,7 @@ export default class oldtda extends Component {
 
         const blob = new Blob([stl])
 
-        saveAs(blob, 'zaxe_baski.stl')
+        saveAs(blob, `${name}_keychain.stl`)
       })
     }
     event.preventDefault()
