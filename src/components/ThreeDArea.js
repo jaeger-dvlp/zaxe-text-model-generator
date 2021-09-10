@@ -50,7 +50,6 @@ export default class oldtda extends Component {
       scene.add(textMesh)
       var box = new THREE.Box3().setFromObject(textMesh)
       textlength = parseInt(box.max.x - box.min.x)
-      console.log(textlength)
       textMesh.position.set(-textlength + 20, 13, 0)
       textMesh.rotation.set(0, 0, 0)
 
@@ -96,7 +95,7 @@ export default class oldtda extends Component {
                 value={this.state.value}
                 onChange={this.handleChange}
                 id="name"
-                placeholder="Adınız"
+                placeholder="Ad / Kan Grubu"
                 required
                 autoComplete="off"
               />

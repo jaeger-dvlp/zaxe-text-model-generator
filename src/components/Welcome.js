@@ -6,7 +6,8 @@ export default class Welcome extends Component {
       <div className="col-12 d-flex row m-0 text-center welcome">
         <span>Merhaba.</span>
         <span style={{fontSize: 'calc(0.1vw + 1rem)'}}>
-          Adınızı girerek size özel anahtarlığınızı alabilirsiniz.
+          Adınızı veya Kan Grubunuzu girerek size özel anahtarlığınızı
+          alabilirsiniz.
         </span>
         <div className="col-12 text-center arrow-tip">
           <i className="fas fa-angle-down"></i>
