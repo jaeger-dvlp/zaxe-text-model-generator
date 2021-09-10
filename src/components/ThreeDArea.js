@@ -38,7 +38,7 @@ export default class oldtda extends Component {
     loader.load('./fonts/Montserrat_Bold.json', (font) => {
       const geometry = new THREE.TextGeometry(name, {
         font: font,
-        size: 9,
+        size: 10,
         height: 3,
         color: '#009ade'
       })
