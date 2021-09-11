@@ -1,4 +1,6 @@
 import './App.css'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import ScriptTag from 'react-script-tag'
 import Header from './components/Header.js'
@@ -13,11 +15,19 @@ function App() {
         src="https://kit.fontawesome.com/a5c523402b.js"
       />
       <Header></Header>
-      <div className="container p-3 text-center">
+      <div
+        data-aos="fade-in"
+        data-aos-easing="ease-in-sine"
+        className="container p-3 text-center"
+      >
         <Welcome></Welcome>
 
         <ThreeDArea></ThreeDArea>
       </div>
+      {AOS.init({
+        startEvent: 'DOMContentLoaded',
+        easing: 'ease-out-back'
+      })}
     </div>
   )
 }
