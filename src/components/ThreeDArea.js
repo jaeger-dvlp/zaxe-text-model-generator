@@ -20,12 +20,7 @@ export default class oldtda extends Component {
 
   handleSubmit(event) {
     let name = this.state.value
-    const camera = new THREE.PerspectiveCamera(
-      65,
-      window.innerWidth / window.innerHeight,
-      5,
-      100
-    )
+    const camera = new THREE.PerspectiveCamera()
 
     var textlength = 0
     var textMesh
@@ -118,7 +113,7 @@ export default class oldtda extends Component {
             ></STLViewer>
             <div className="cursor-group mx-auto text-center">
               <div className="cursor-outer text-center col-12">
-                <i class="fas fa-hand-pointer text-center cursor-icon"></i>
+                <i className="fas fa-hand-pointer text-center cursor-icon"></i>
               </div>
             </div>
           </form>
