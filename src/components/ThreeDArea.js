@@ -109,7 +109,7 @@ export default class oldtda extends Component {
 
             <STLViewer
               className="model-viewer mx-auto mt-3"
-              width={400}
+              width={300}
               height={200}
               modelColor="#009ADE"
               backgroundColor="#FFF"
