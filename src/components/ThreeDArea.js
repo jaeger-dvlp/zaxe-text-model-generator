@@ -3,6 +3,7 @@ import * as THREE from 'three'
 import {saveAs} from 'file-saver'
 import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import {STLExporter} from 'three/examples/jsm/exporters/STLExporter'
+import STLViewer from 'stl-viewer'
 const objLoader = new OBJLoader()
 var stl
 export default class oldtda extends Component {
@@ -104,6 +105,23 @@ export default class oldtda extends Component {
               <button type="submit" className="submit-btn">
                 Gönder
               </button>
+            </div>
+
+            <STLViewer
+              className="model-viewer mx-auto mt-3"
+              width={400}
+              height={200}
+              modelColor="#009ADE"
+              backgroundColor="#FFF"
+              model="./3dmodels/zaxe_keychain.stl"
+              rotate={false}
+              cameraX={-200}
+              cameraY={-100}
+            ></STLViewer>
+            <div className="cursor-group mx-auto text-center">
+              <div className="cursor-outer text-center col-12">
+                <i class="fas fa-hand-pointer text-center cursor-icon"></i>
+              </div>
             </div>
           </form>
         </div>
