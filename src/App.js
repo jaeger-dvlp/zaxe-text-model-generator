@@ -8,6 +8,9 @@ import Welcome from './components/Welcome.js'
 import ThreeDArea from './components/ThreeDArea'
 
 function App() {
+  {
+    console.log = console.warn = console.error = () => {}
+  }
   return (
     <div className="App">
       <ScriptTag
