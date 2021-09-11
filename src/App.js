@@ -8,9 +8,6 @@ import Welcome from './components/Welcome.js'
 import ThreeDArea from './components/ThreeDArea'
 
 function App() {
-  {
-    console.log = console.warn = console.error = () => {}
-  }
   return (
     <div className="App">
       <ScriptTag
@@ -21,6 +18,7 @@ function App() {
       <div
         data-aos="fade-in"
         data-aos-easing="ease-in-sine"
+        data-aos-delay="300"
         className="container p-3 text-center"
       >
         <Welcome></Welcome>
