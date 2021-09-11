@@ -19,8 +19,6 @@ export default class oldtda extends Component {
   }
 
   handleSubmit(event) {
-    //alert('A name was submitted: ' + this.state.value)
-
     let name = this.state.value
     const camera = new THREE.PerspectiveCamera(
       65,
