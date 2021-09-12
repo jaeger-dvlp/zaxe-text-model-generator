@@ -27,12 +27,13 @@ export default class ThreeDArea extends Component {
     const camera = new THREE.PerspectiveCamera()
     const renderer = new THREE.WebGLRenderer({antialias: true})
     let blob
+    let geometry
     let textObject
     let textObjectBox
     let textObjectLength
 
     fontLoader.load('./fonts/Montserrat_Bold.json', (font) => {
-      const geometry = new THREE.TextGeometry(this.state.namevalue, {
+      geometry = new THREE.TextGeometry(this.state.namevalue, {
         font: font,
         size: 10,
         height: 3,
