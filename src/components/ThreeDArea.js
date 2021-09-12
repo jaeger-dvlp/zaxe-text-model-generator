@@ -4,74 +4,72 @@ import {saveAs} from 'file-saver'
 import {OBJLoader} from 'three/examples/jsm/loaders/OBJLoader'
 import {STLExporter} from 'three/examples/jsm/exporters/STLExporter'
 import STLViewer from 'stl-viewer'
-const objLoader = new OBJLoader()
-var stl
-export default class oldtda extends Component {
+export default class ThreeDArea extends Component {
   constructor(props) {
     super(props)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.state = {value: ''}
+    this.state = {
+      namevalue: '',
+      stlViewerModel: './3dmodels/zaxe_keychain.stl'
+    }
   }
 
   handleChange(event) {
-    this.setState({value: event.target.value})
+    this.setState({namevalue: event.target.value})
   }
 
   handleSubmit(event) {
-    let name = this.state.value
-    const camera = new THREE.PerspectiveCamera()
-
-    var textlength = 0
-    var textMesh
     const scene = new THREE.Scene()
+    const stlExporter = new STLExporter()
+    const fontLoader = new THREE.FontLoader()
+    const keychainObjectLoader = new OBJLoader()
+    const camera = new THREE.PerspectiveCamera()
     const renderer = new THREE.WebGLRenderer({antialias: true})
+    let blob
+    let textObject
+    let textObjectBox
+    let textObjectLength
 
-    const loader = new THREE.FontLoader()
-
-    loader.load('./fonts/Montserrat_Bold.json', (font) => {
-      const geometry = new THREE.TextGeometry(name, {
+    fontLoader.load('./fonts/Montserrat_Bold.json', (font) => {
+      const geometry = new THREE.TextGeometry(this.state.namevalue, {
         font: font,
         size: 10,
         height: 3,
         color: '#009ade'
       })
 
-      textMesh = new THREE.Mesh(geometry, [
+      textObject = new THREE.Mesh(geometry, [
         new THREE.MeshPhongMaterial({color: '#009ade'})
       ])
 
-      scene.add(textMesh)
-      var box = new THREE.Box3().setFromObject(textMesh)
-      textlength = parseInt(box.max.x - box.min.x)
-      textMesh.position.set(-textlength + 20, 13, 0)
-      textMesh.rotation.set(0, 0, 0)
+      scene.add(textObject)
 
-      loadObj()
+      textObjectBox = new THREE.Box3().setFromObject(textObject)
+      textObjectLength = parseInt(textObjectBox.max.x - textObjectBox.min.x)
+      textObject.position.set(-textObjectLength + 20, 13, 0)
+      textObject.rotation.set(0, 0, 0)
+
+      loadKeychainObject()
     })
 
-    function loadObj() {
-      objLoader.load('./3dmodels/keychain.obj', (obj) => {
-        scene.add(obj)
-        obj.position.set(0, 17, 0)
-        if (textlength > 100) {
-          obj.scale.setX(textlength / 50)
-          textMesh.position.set(-textlength + 30, 13, 0)
-        } else if (textlength > 50) {
-          obj.scale.setX(textlength / 50)
-          textMesh.position.set(-textlength + 19, 13, 0)
+    const loadKeychainObject = () => {
+      keychainObjectLoader.load('./3dmodels/keychain.obj', (keychainObject) => {
+        scene.add(keychainObject)
+        keychainObject.position.set(0, 17, 0)
+        if (textObjectLength > 100) {
+          keychainObject.scale.setX(textObjectLength / 50)
+          textObject.position.set(-textObjectLength + 30, 13, 0)
+        } else if (textObjectLength > 50) {
+          keychainObject.scale.setX(textObjectLength / 50)
+          textObject.position.set(-textObjectLength + 19, 13, 0)
         } else {
-          textMesh.position.set(-textlength + 10, 13, 0)
+          textObject.position.set(-textObjectLength + 10, 13, 0)
         }
-        scene.position.setX(100)
+
         renderer.render(scene, camera)
-
-        let exporter = new STLExporter()
-        stl = exporter.parse(scene)
-
-        const blob = new Blob([stl])
-
-        saveAs(blob, `${name}_keychain.stl`)
+        blob = new Blob([stlExporter.parse(scene)])
+        saveAs(blob, `${this.state.namevalue}_keychain.stl`)
       })
     }
     event.preventDefault()
@@ -86,7 +84,7 @@ export default class oldtda extends Component {
               <input
                 type="text"
                 className="name-input"
-                value={this.state.value}
+                namevalue={this.state.namevalue}
                 onChange={this.handleChange}
                 id="name"
                 placeholder="Ad / Kan Grubu"
@@ -100,20 +98,26 @@ export default class oldtda extends Component {
               </button>
             </div>
 
-            <STLViewer
-              className="model-viewer mx-auto mt-3"
-              width={300}
-              height={200}
-              modelColor="#009ADE"
-              backgroundColor="#FFF"
-              model="./3dmodels/zaxe_keychain.stl"
-              rotate={false}
-              cameraX={-200}
-              cameraY={-100}
-            ></STLViewer>
-            <div className="cursor-group mx-auto text-center">
-              <div className="cursor-outer text-center col-12">
-                <i className="fas fa-hand-pointer text-center cursor-icon"></i>
+            <div
+              className="col-12 p-0 m-0"
+              data-aos="zoom-in-up"
+              data-aos-delay="500"
+            >
+              <STLViewer
+                className="model-viewer mx-auto mt-3"
+                width={300}
+                height={200}
+                modelColor="#009ADE"
+                backgroundColor="#FFF"
+                model={this.state.stlViewerModel}
+                rotate={false}
+                cameraX={-200}
+                cameraY={-100}
+              ></STLViewer>
+              <div className="cursor-group mx-auto text-center">
+                <div className="cursor-outer text-center col-12">
+                  <i className="fas fa-hand-pointer text-center cursor-icon"></i>
+                </div>
               </div>
             </div>
           </form>
