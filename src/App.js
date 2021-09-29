@@ -23,7 +23,7 @@ function App() {
       >
         <Welcome></Welcome>
 
-        <ThreeDArea></ThreeDArea>
+        <ThreeDArea />
       </div>
       {AOS.init({
         startEvent: 'DOMContentLoaded',
